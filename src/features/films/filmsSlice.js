@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   films: [],
+  favoriteFilms: [],
+  filmsToWatchMoreLater: [],
 };
 
 export const filmsSlice = createSlice({
@@ -11,17 +13,24 @@ export const filmsSlice = createSlice({
     initialFilms: (state, action) => {
       state.films = [action.payload];
     },
-    addFavouriteFilm: (state) => {},
-    removeFavouriteFilm: (state) => {},
-    addToWatchMoreLater: (state) => {},
+    addFavoriteFilm: (state, action) => {
+      state.favoriteFilms = [action.payload, ...state.favoriteFilms];
+    },
+    removeFavoriteFilm: (state) => {},
+    addToWatchMoreLater: (state, action) => {
+      state.filmsToWatchMoreLater = [
+        action.payload,
+        ...state.filmsToWatchMoreLater,
+      ];
+    },
     removeToWatchMoreLate: (state) => {},
   },
 });
 
 export const {
   initialFilms,
-  addFavouriteFilm,
-  removeFavouriteFilm,
+  addFavoriteFilm,
+  removeFavoriteFilm,
   addToWatchMoreLater,
   removeToWatchMoreLate,
 } = filmsSlice.actions;
