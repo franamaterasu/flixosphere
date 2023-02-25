@@ -4,7 +4,7 @@ import {
   addToWatchMoreLater,
 } from "../../features/films/filmsSlice";
 
-const Item = ({ info }) => {
+const Card = ({ info }) => {
   const { title, poster_path } = info;
   const itemImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
@@ -28,4 +28,4 @@ const Item = ({ info }) => {
   );
 };
 
-export default Item;
+export default Card;

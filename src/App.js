@@ -1,11 +1,16 @@
 import Header from "./components/header/";
-import ItemsList from "./components/itemsList/ItemsList";
+import Home from "./pages/home/";
+import WatchMoreLater from "./pages/watchMoreLater";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
       <Header />
-      <ItemsList />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/watch-more-later" element={<WatchMoreLater />} />
+      </Routes>
     </>
   );
 };

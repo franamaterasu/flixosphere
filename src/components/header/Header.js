@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 
 const Header = () => {
@@ -21,6 +22,10 @@ const Header = () => {
         />
         <button type="submit">Search</button>
       </form>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/watch-more-later">Pending</Link>
+      </nav>
     </header>
   );
 };

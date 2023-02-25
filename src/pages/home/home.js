@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
-import Item from "../item";
+import Card from "../../components/card";
 
-export const ItemsList = () => {
+export const Home = () => {
   const items = useSelector((state) => state.films.films.flat());
 
   return (
     <section>
       {items.map((item, index) => (
-        <Item key={index} info={item} />
+        <Card key={index} info={item} />
       ))}
     </section>
   );
 };
 
-export default ItemsList;
+export default Home;
