@@ -1,5 +1,13 @@
-import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import {
+  Container,
+  Logo,
+  Form,
+  FormInput,
+  FormButton,
+  FormButtonIcon,
+  NavLink,
+} from "./header.styled.js";
 
 const Header = () => {
   const { setSearchValue } = useFetch();
@@ -11,22 +19,26 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <span>FLIXOSPHERE</span>
-      <form onSubmit={handleSubmit}>
-        <input
+    <Container>
+      <Logo>
+        FLIXO<span>SPHERE</span>
+      </Logo>
+      <Form onSubmit={handleSubmit}>
+        <FormInput
           id="filmName"
           name="filmName"
           type="text"
-          placeholder="Search your favourite film"
+          placeholder="Search your favorite film"
         />
-        <button type="submit">Search</button>
-      </form>
+        <FormButton type="submit">
+          <FormButtonIcon type="submit" />
+        </FormButton>
+      </Form>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/watch-more-later">Pending</Link>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/watch-more-later">Pending</NavLink>
       </nav>
-    </header>
+    </Container>
   );
 };
 
