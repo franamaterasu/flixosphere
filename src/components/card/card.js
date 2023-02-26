@@ -1,21 +1,27 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addFavoriteFilm,
   addToWatchMoreLater,
 } from "../../features/films/filmsSlice";
 
 const Card = ({ info }) => {
+  const dispatch = useDispatch();
+
   const { title, poster_path } = info;
   const itemImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
-  const dispatch = useDispatch();
+  const pendingItems = useSelector(
+    (state) => state.films.filmsToWatchMoreLater
+  );
 
   const handleFavoriteClick = () => {
     dispatch(addFavoriteFilm(info));
   };
 
   const handleWatchLaterClick = () => {
-    dispatch(addToWatchMoreLater(info));
+    pendingItems.includes(info)
+      ? alert("La peli ya está en pendientes")
+      : dispatch(addToWatchMoreLater(info));
   };
 
   return (

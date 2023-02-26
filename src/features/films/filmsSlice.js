@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   films: [],
@@ -23,7 +23,16 @@ export const filmsSlice = createSlice({
         ...state.filmsToWatchMoreLater,
       ];
     },
-    removeToWatchMoreLate: (state) => {},
+    removeToWatchMoreLater: (state, action) => {
+      let filmsToWatchMoreLaterList = current(state.filmsToWatchMoreLater);
+      const id = action.payload.id;
+
+      filmsToWatchMoreLaterList = filmsToWatchMoreLaterList.filter(
+        (item) => item.id !== id
+      );
+
+      state.filmsToWatchMoreLater = filmsToWatchMoreLaterList;
+    },
   },
 });
 
@@ -32,7 +41,7 @@ export const {
   addFavoriteFilm,
   removeFavoriteFilm,
   addToWatchMoreLater,
-  removeToWatchMoreLate,
+  removeToWatchMoreLater,
 } = filmsSlice.actions;
 
 export default filmsSlice.reducer;
