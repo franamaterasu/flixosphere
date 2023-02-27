@@ -1,5 +1,5 @@
-import ListItem from "../../components/listItem";
-
+import Table from "../../components/table";
+import EmptyState from "../../components/emptyState";
 import { useSelector } from "react-redux";
 
 const WatchMoreLater = () => {
@@ -9,11 +9,11 @@ const WatchMoreLater = () => {
 
   return (
     <section>
-      <ul>
-        {pendingItems.map((pendingItem, index) => (
-          <ListItem key={index} info={pendingItem} />
-        ))}
-      </ul>
+      {pendingItems.length > 0 ? (
+        <Table />
+      ) : (
+        <EmptyState text="Pending list is empty" />
+      )}
     </section>
   );
 };

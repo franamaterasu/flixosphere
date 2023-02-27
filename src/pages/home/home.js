@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Card from "../../components/card";
-import EmptyState from "../../components/emptyState/emptyState";
+import EmptyState from "../../components/emptyState/";
 import { Container } from "./home.styled.js";
 
 export const Home = () => {
