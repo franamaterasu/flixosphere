@@ -5,7 +5,7 @@ import { initialFilms } from "../features/films/filmsSlice";
 const useFetch = () => {
   const [searchValue, setSearchValue] = useState("");
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=7cdd6813e009397c594758fe7bce7b47&language=en-US&query=${searchValue}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=7cdd6813e009397c594758fe7bce7b47&language=en-US&query=${searchValue}&append_to_response=videos`;
 
   const dispatch = useDispatch();
 

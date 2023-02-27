@@ -13,16 +13,29 @@ export const filmsSlice = createSlice({
     initialFilms: (state, action) => {
       state.films = [action.payload];
     },
+
     addFavoriteFilm: (state, action) => {
       state.favoriteFilms = [action.payload, ...state.favoriteFilms];
     },
-    removeFavoriteFilm: (state) => {},
+
+    removeFavoriteFilm: (state, action) => {
+      let filmsToFavoriteList = current(state.favoriteFilms);
+      const id = action.payload.id;
+
+      filmsToFavoriteList = filmsToFavoriteList.filter(
+        (item) => item.id !== id
+      );
+
+      state.favoriteFilms = filmsToFavoriteList;
+    },
+
     addToWatchMoreLater: (state, action) => {
       state.filmsToWatchMoreLater = [
         action.payload,
         ...state.filmsToWatchMoreLater,
       ];
     },
+
     removeToWatchMoreLater: (state, action) => {
       let filmsToWatchMoreLaterList = current(state.filmsToWatchMoreLater);
       const id = action.payload.id;
