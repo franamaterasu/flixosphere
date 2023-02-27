@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const Table = styled.table`
+export const Wrapper = styled.section`
   width: 90%;
   margin: 50px auto;
   max-width: 1200px;
+  overflow-x: auto;
+  display: block;
+`;
+
+export const Table = styled.table`
+  width: 100%;
 `;
 
 export const TableHeader = styled.thead`

@@ -14,6 +14,8 @@ const TableItem = ({ info }) => {
 
   const itemImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
+  const shortOverview = overview.slice(0, 150);
+
   const handleDeleteFromPending = () => {
     dispatch(removeToWatchMoreLater(info));
   };
@@ -44,7 +46,7 @@ const TableItem = ({ info }) => {
         <span>{title}</span>
       </TableData>
       <TableData>
-        <p>{overview}</p>
+        <p>{shortOverview}</p>
       </TableData>
       <TableData>
         <TableDataIcon onClick={() => handleDeleteFromPending(info)} />

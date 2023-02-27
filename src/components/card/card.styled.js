@@ -20,6 +20,7 @@ export const Title = styled.h4`
   font-family: "Noto Sans Bassa Vah", sans-serif;
   font-size: 14px;
   margin: 10px 0 20px;
+  line-height: 20px;
 `;
 
 export const FavoriteIcon = styled(GrFavorite)`
@@ -41,6 +42,10 @@ export const Button = styled.button`
   border-radius: 5px;
   padding: 5px 10px;
   margin-right: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &:last-of-type {
     margin-right: 0;
