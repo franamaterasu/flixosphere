@@ -4,6 +4,7 @@ const initialState = {
   films: [],
   favoriteFilms: [],
   filmsToWatchMoreLater: [],
+  ismodalOpen: false,
 };
 
 export const filmsSlice = createSlice({
@@ -30,10 +31,17 @@ export const filmsSlice = createSlice({
     },
 
     addToWatchMoreLater: (state, action) => {
-      state.filmsToWatchMoreLater = [
-        action.payload,
-        ...state.filmsToWatchMoreLater,
-      ];
+      let filmsToWatchMoreLater = current(state.filmsToWatchMoreLater);
+      const film = action.payload;
+
+      if (filmsToWatchMoreLater.includes(film)) {
+        state.ismodalOpen = true;
+      } else {
+        state.filmsToWatchMoreLater = [
+          action.payload,
+          ...state.filmsToWatchMoreLater,
+        ];
+      }
     },
 
     removeToWatchMoreLater: (state, action) => {
@@ -46,6 +54,10 @@ export const filmsSlice = createSlice({
 
       state.filmsToWatchMoreLater = filmsToWatchMoreLaterList;
     },
+
+    closeModal: (state) => {
+      state.ismodalOpen = false;
+    },
   },
 });
 
@@ -55,6 +67,7 @@ export const {
   removeFavoriteFilm,
   addToWatchMoreLater,
   removeToWatchMoreLater,
+  closeModal,
 } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

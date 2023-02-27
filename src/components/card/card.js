@@ -20,24 +20,16 @@ const Card = ({ info }) => {
   const { title, poster_path } = info;
   const itemImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
-  const pendingItems = useSelector(
-    (state) => state.films.filmsToWatchMoreLater
-  );
-
   const favoriteItems = useSelector((state) => state.films.favoriteFilms);
 
   const isFavorite = favoriteItems.includes(info);
 
   const handleAddFavoriteClick = () => {
-    isFavorite
-      ? alert("La peli ya está en favoritos")
-      : dispatch(addFavoriteFilm(info));
+    dispatch(addFavoriteFilm(info));
   };
 
   const handleWatchLaterClick = () => {
-    pendingItems.includes(info)
-      ? alert("La peli ya está en pendientes")
-      : dispatch(addToWatchMoreLater(info));
+    dispatch(addToWatchMoreLater(info));
   };
 
   const handleRemoveFavoriteClick = () => {
