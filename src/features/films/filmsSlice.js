@@ -34,7 +34,11 @@ export const filmsSlice = createSlice({
       let filmsToWatchMoreLater = current(state.filmsToWatchMoreLater);
       const film = action.payload;
 
-      if (filmsToWatchMoreLater.includes(film)) {
+      const isIntheList = filmsToWatchMoreLater.find(
+        (item) => item.id === film.id
+      );
+
+      if (isIntheList) {
         state.ismodalOpen = true;
       } else {
         state.filmsToWatchMoreLater = [
