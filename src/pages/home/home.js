@@ -5,7 +5,8 @@ import Modal from "../../components/modal";
 import { Container } from "./home.styled.js";
 
 export const Home = () => {
-  const items = useSelector((state) => state.films.films.flat());
+  const items = useSelector((state) => state.films.films);
+
   const showModal = useSelector((state) => state.films.ismodalOpen);
 
   return (

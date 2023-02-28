@@ -12,7 +12,7 @@ export const filmsSlice = createSlice({
   initialState,
   reducers: {
     initialFilms: (state, action) => {
-      state.films = [action.payload];
+      state.films = [...action.payload];
     },
 
     addFavoriteFilm: (state, action) => {
