@@ -17,4 +17,9 @@ export const Icon = styled(GrVideo)`
 export const Text = styled.p`
   font-family: "Noto Sans Bassa Vah", sans-serif;
   font-size: 16px;
+  width: 90%;
+  margin: 5px auto 0;
+  max-width: 400px;
+  text-align: center;
+  line-height: 23px;
 `;
