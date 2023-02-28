@@ -39,7 +39,7 @@ const Card = ({ info }) => {
   };
 
   return (
-    <Container>
+    <Container data-testid="card">
       <Wrapper>
         <ImageContainer>
           {poster_path ? (
@@ -54,9 +54,17 @@ const Card = ({ info }) => {
           )}
           <ButtonsContainer>
             {!isFavorite ? (
-              <Button onClick={handleAddFavoriteClick}>Favorite</Button>
+              <Button
+                data-testid="card-favorite-button"
+                onClick={handleAddFavoriteClick}
+              >
+                Favorite
+              </Button>
             ) : (
-              <Button onClick={handleRemoveFavoriteClick}>
+              <Button
+                data-testid="card-favorite-button"
+                onClick={handleRemoveFavoriteClick}
+              >
                 Remove from favorites
               </Button>
             )}
@@ -65,7 +73,7 @@ const Card = ({ info }) => {
           </ButtonsContainer>
         </ImageContainer>
         <Title>{title}</Title>
-        {isFavorite && <FavoriteIcon />}
+        {isFavorite && <FavoriteIcon data-testid="card-favorite-icon" />}
       </Wrapper>
     </Container>
   );
