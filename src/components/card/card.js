@@ -24,7 +24,7 @@ const Card = ({ info }) => {
 
   const favoriteItems = useSelector((state) => state.films.favoriteFilms);
 
-  const isFavorite = favoriteItems.includes(info);
+  const isFavorite = favoriteItems.find((item) => item.id === info.id);
 
   const handleAddFavoriteClick = () => {
     dispatch(addFavoriteFilm(info));

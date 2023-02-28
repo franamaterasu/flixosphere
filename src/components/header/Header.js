@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import { searchValue } from "../../features/films/filmsSlice";
 import {
   Container,
   Logo,
@@ -13,14 +13,14 @@ import {
 } from "./header.styled.js";
 
 const Header = () => {
-  const { setSearchValue } = useFetch();
+  const dispatch = useDispatch();
   const location = useLocation();
   const pendinItems = useSelector((state) => state.films.filmsToWatchMoreLater);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    setSearchValue(form.filmName.value);
+    dispatch(searchValue(form.filmName.value));
   };
 
   return (

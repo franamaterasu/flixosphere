@@ -1,10 +1,21 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import { getFilms } from "./features/films/filmsSlice";
+
 import Header from "./components/header/";
 import Home from "./pages/home/";
 import WatchMoreLater from "./pages/watchMoreLater";
-import { Routes, Route } from "react-router-dom";
+
 import EmptyState from "./components/emptyState";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getFilms());
+  }, []);
+
   return (
     <>
       <Header />

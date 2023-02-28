@@ -1,16 +1,29 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
+  searchValue: "",
   films: [],
   favoriteFilms: [],
   filmsToWatchMoreLater: [],
   ismodalOpen: false,
 };
 
+const initialURL =
+  "https://api.themoviedb.org/3/movie/top_rated/?api_key=7cdd6813e009397c594758fe7bce7b47&language=en-US";
+
+export const getFilms = createAsyncThunk("films/getFilms", async () => {
+  return fetch(initialURL)
+    .then((res) => res.json())
+    .then((res) => res.results);
+});
+
 export const filmsSlice = createSlice({
   name: "films",
   initialState,
   reducers: {
+    searchValue: (state, action) => {
+      state.searchValue = action.payload;
+    },
     initialFilms: (state, action) => {
       state.films = [...action.payload];
     },
@@ -63,9 +76,15 @@ export const filmsSlice = createSlice({
       state.ismodalOpen = false;
     },
   },
+  extraReducers: {
+    [getFilms.fulfilled]: (state, action) => {
+      state.films = action.payload;
+    },
+  },
 });
 
 export const {
+  searchValue,
   initialFilms,
   addFavoriteFilm,
   removeFavoriteFilm,
