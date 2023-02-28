@@ -8,9 +8,11 @@ import {
 import {
   Container,
   Wrapper,
+  ImageContainer,
   Image,
   Title,
   FavoriteIcon,
+  ButtonsContainer,
   Button,
 } from "./card.styled.js";
 
@@ -39,27 +41,31 @@ const Card = ({ info }) => {
   return (
     <Container>
       <Wrapper>
-        {poster_path ? (
-          <Image src={itemImage} alt={title} width="250" height="350" />
-        ) : (
-          <Image
-            src={`https://via.placeholder.com/250/?text=${title}`}
-            alt={title}
-            width="250"
-            height="350"
-          />
-        )}
+        <ImageContainer>
+          {poster_path ? (
+            <Image src={itemImage} alt={title} width="250" height="350" />
+          ) : (
+            <Image
+              src={`https://via.placeholder.com/250/?text=${title}`}
+              alt={title}
+              width="250"
+              height="350"
+            />
+          )}
+          <ButtonsContainer>
+            {!isFavorite ? (
+              <Button onClick={handleAddFavoriteClick}>Favorite</Button>
+            ) : (
+              <Button onClick={handleRemoveFavoriteClick}>
+                Remove from favorites
+              </Button>
+            )}
+
+            <Button onClick={handleWatchLaterClick}>Watch later</Button>
+          </ButtonsContainer>
+        </ImageContainer>
         <Title>{title}</Title>
         {isFavorite && <FavoriteIcon />}
-        {!isFavorite ? (
-          <Button onClick={handleAddFavoriteClick}>Favorite</Button>
-        ) : (
-          <Button onClick={handleRemoveFavoriteClick}>
-            Remove from favorites
-          </Button>
-        )}
-
-        <Button onClick={handleWatchLaterClick}>Watch later</Button>
       </Wrapper>
     </Container>
   );

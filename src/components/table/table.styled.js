@@ -10,15 +10,16 @@ export const Wrapper = styled.section`
 
 export const Table = styled.table`
   width: 100%;
+  border: 10px;
 `;
 
 export const TableHeader = styled.thead`
-  border-right: 2px solid #0f0f0f;
-  border-left: 2px solid #0f0f0f;
+  border-right: 2px solid #005dff;
+  border-left: 2px solid #005dff;
 `;
 
 export const TableHeadColumn = styled.th`
-  background-color: #0f0f0f;
+  background-color: #005dff;
   color: #f0f0f0;
   font-family: "Noto Sans Bassa Vah", sans-serif;
   padding: 20px;
