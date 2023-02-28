@@ -7,6 +7,8 @@ export const Container = styled.article`
 
 export const Wrapper = styled.div`
   position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -17,22 +19,30 @@ export const ButtonsContainer = styled.div`
   transition: bottom 0.5s ease-in-out;
 `;
 
+export const Image = styled.img`
+  border-radius: 10px;
+  width: 100%;
+  min-height: 389px;
+  transition: all 0.5s ease-in-out;
+`;
+
 export const ImageContainer = styled.div`
   position: relative;
   overflow: hidden;
   font-size: 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   &:hover ${ButtonsContainer} {
     bottom: 0;
   }
-`;
 
-export const Image = styled.img`
-  border-radius: 10px;
-  width: 100%;
-  min-height: 389px;
+  &:hover ${Image} {
+    transform: scale(1.2);
+    filter: grayscale(60%);
+  }
 `;
 
 export const Title = styled.h4`

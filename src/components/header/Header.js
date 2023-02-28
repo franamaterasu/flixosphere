@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import {
@@ -8,11 +9,13 @@ import {
   FormButton,
   FormButtonIcon,
   NavLink,
+  NavLinkBadge,
 } from "./header.styled.js";
 
 const Header = () => {
   const { setSearchValue } = useFetch();
   const location = useLocation();
+  const pendinItems = useSelector((state) => state.films.filmsToWatchMoreLater);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,7 +44,12 @@ const Header = () => {
 
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/watch-more-later">Pending</NavLink>
+        <NavLink to="/watch-more-later">
+          Pending
+          {pendinItems.length >= 1 && (
+            <NavLinkBadge>{pendinItems.length}</NavLinkBadge>
+          )}
+        </NavLink>
       </nav>
     </Container>
   );

@@ -97,3 +97,14 @@ export const NavLink = styled(Link)`
     color: #005dff;
   }
 `;
+
+export const NavLinkBadge = styled.span`
+  font-family: "Lato", sans-serif;
+  color: #f0f0f0;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 100%;
+  background-color: #005dff;
+  transform: translate(0, -12px);
+  display: inline-block;
+`;
