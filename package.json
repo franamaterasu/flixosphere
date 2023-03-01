@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose=true --collectCoverage=true",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,6 +43,7 @@
     "styled-components": "^5"
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.0.0",
     "@testing-library/user-event": "^14.4.3"
   }
 }

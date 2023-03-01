@@ -55,14 +55,14 @@ const Card = ({ info }) => {
           <ButtonsContainer>
             {!isFavorite ? (
               <Button
-                data-testid="card-favorite-button"
+                data-testid="card-add-favorite-button"
                 onClick={handleAddFavoriteClick}
               >
                 Favorite
               </Button>
             ) : (
               <Button
-                data-testid="card-favorite-button"
+                data-testid="card-delete-favorite-button"
                 onClick={handleRemoveFavoriteClick}
               >
                 Remove from favorites

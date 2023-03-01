@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../app/store";
 import { BrowserRouter } from "react-router-dom";
@@ -24,7 +24,7 @@ describe("<Card />", () => {
     expect(card).toBeInTheDocument();
   });
 
-  test("favorite icon appear when click in favorite button", () => {
+  test("favorite icon appear when click in favorite button and delete button appears", async () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
@@ -33,11 +33,22 @@ describe("<Card />", () => {
       </Provider>
     );
 
-    const favoriteButton = screen.getByTestId("card-favorite-button");
-    const favoriteIcon = screen.getByTestId("card-favorite-icon");
+    const favoriteButton = screen.getByTestId("card-add-favorite-button");
 
     fireEvent.click(favoriteButton);
 
-    expect(favoriteIcon).toBeInTheDocument();
+    await waitFor(() => {
+      const favoriteIcon = screen.getByTestId("card-favorite-icon");
+
+      expect(favoriteIcon).toBeInTheDocument();
+    });
+
+    await waitFor(() => {
+      const deleteFavoriteButton = screen.getByTestId(
+        "card-delete-favorite-button"
+      );
+
+      expect(deleteFavoriteButton).toBeInTheDocument();
+    });
   });
 });
