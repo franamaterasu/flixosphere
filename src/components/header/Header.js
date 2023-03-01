@@ -20,8 +20,8 @@ const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    dispatch(searchValue(form.filmName.value));
     dispatch(resetPage(1));
+    dispatch(searchValue(form.filmName.value));
   };
 
   return (

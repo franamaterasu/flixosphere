@@ -10,14 +10,9 @@ export const Home = () => {
 
   return (
     <section data-test-id="home">
-      {items.length >= 1 ? (
-        <>
-          <Gallery />
-          <Pagination />
-        </>
-      ) : (
-        <EmptyState text="Make a new search..." />
-      )}
+      <Gallery />
+      {items.length !== 0 && <Pagination />}
+      {items.length === 0 && <EmptyState text="Make a new search..." />}
       {showModal && <Modal />}
     </section>
   );

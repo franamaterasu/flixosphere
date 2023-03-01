@@ -8,8 +8,6 @@ const Pagination = () => {
   const totalPages = useSelector((state) => state.films.totalPages);
   const pageNumber = useSelector((state) => state.films.page);
 
-  console.log("total pages", totalPages, "page number", pageNumber);
-
   const handlePrevPageClick = () => {
     dispatch(previousPage());
   };
