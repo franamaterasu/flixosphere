@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { searchValue } from "../../features/films/filmsSlice";
+import { searchValue, resetPage } from "../../features/films/filmsSlice";
 import {
   Container,
   Logo,
@@ -21,6 +21,7 @@ const Header = () => {
     e.preventDefault();
     const form = e.target;
     dispatch(searchValue(form.filmName.value));
+    dispatch(resetPage(1));
   };
 
   return (

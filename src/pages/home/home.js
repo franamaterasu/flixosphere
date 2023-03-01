@@ -1,5 +1,6 @@
 import Gallery from "../../components/gallery";
 import EmptyState from "../../components/emptyState/";
+import Pagination from "../../components/pagination";
 import Modal from "../../components/modal";
 import { useSelector } from "react-redux";
 
@@ -10,7 +11,10 @@ export const Home = () => {
   return (
     <section data-test-id="home">
       {items.length >= 1 ? (
-        <Gallery />
+        <>
+          <Gallery />
+          <Pagination />
+        </>
       ) : (
         <EmptyState text="Make a new search..." />
       )}

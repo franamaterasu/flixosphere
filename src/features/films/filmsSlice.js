@@ -6,10 +6,11 @@ const initialState = {
   favoriteFilms: [],
   filmsToWatchMoreLater: [],
   ismodalOpen: false,
+  page: 1,
+  totalPages: 1,
 };
 
-const initialURL =
-  "https://api.themoviedb.org/3/movie/top_rated/?api_key=7cdd6813e009397c594758fe7bce7b47&language=en-US";
+const initialURL = `https://api.themoviedb.org/3/movie/top_rated/?api_key=7cdd6813e009397c594758fe7bce7b47&language=en-US&page`;
 
 export const getFilms = createAsyncThunk("films/getFilms", async () => {
   return fetch(initialURL)
@@ -23,6 +24,18 @@ export const filmsSlice = createSlice({
   reducers: {
     searchValue: (state, action) => {
       state.searchValue = action.payload;
+    },
+    nextPage: (state) => {
+      state.page += 1;
+    },
+    previousPage: (state) => {
+      state.page -= 1;
+    },
+    resetPage: (state, action) => {
+      state.page = action.payload;
+    },
+    totalPages: (state, action) => {
+      state.totalPages = action.payload;
     },
     initialFilms: (state, action) => {
       state.films = [...action.payload];
@@ -91,6 +104,10 @@ export const {
   addToWatchMoreLater,
   removeToWatchMoreLater,
   closeModal,
+  nextPage,
+  previousPage,
+  totalPages,
+  resetPage,
 } = filmsSlice.actions;
 
 export default filmsSlice.reducer;
