@@ -14,14 +14,12 @@ const TableItem = ({ info }) => {
 
   const itemImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
-  const shortOverview = overview.slice(0, 150);
-
   const handleDeleteFromPending = () => {
     dispatch(removeToWatchMoreLater(info));
   };
 
   return (
-    <TableRow>
+    <TableRow data-testid="table-item">
       <TableData>
         <span>{id}</span>
       </TableData>
@@ -31,7 +29,7 @@ const TableItem = ({ info }) => {
             src={itemImage}
             alt={title}
             width="150"
-            height="100"
+            height="200"
           />
         ) : (
           <TableDataImage
@@ -46,10 +44,13 @@ const TableItem = ({ info }) => {
         <span>{title}</span>
       </TableData>
       <TableData>
-        <p>{shortOverview}</p>
+        <p>{overview}</p>
       </TableData>
       <TableData>
-        <TableDataIcon onClick={() => handleDeleteFromPending(info)} />
+        <TableDataIcon
+          data-testid="table-item-delete-button"
+          onClick={() => handleDeleteFromPending(info)}
+        />
       </TableData>
     </TableRow>
   );
